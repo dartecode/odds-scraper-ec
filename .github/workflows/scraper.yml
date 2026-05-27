@@ -32,4 +32,7 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          BETANO_LIGA_API: ${{ secrets.BETANO_LIGA_API }}
+          RUTA_ALTERNAR: ${{ secrets.RUTA_ALTERNAR }}
+          RUTA_SORTI: ${{ secrets.RUTA_SORTI }}
         run: python -m app.main_scraper
