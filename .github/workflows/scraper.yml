@@ -22,6 +22,9 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
+      - name: Instalar Playwright browsers
+        run: playwright install --with-deps
+
       - name: Ejecutar scraper
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
