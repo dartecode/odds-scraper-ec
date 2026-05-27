@@ -33,10 +33,30 @@ class AltenarScraper:
     }
 
     MAPEO_MERCADOS = {
-        "1x2": ("1X2", "Resultado del partido"),
-        "total": ("OVER_UNDER", "Más/Menos goles", "Total de goles"),
-        "ambos equipos marcan": ("AMBOS_MARCAN", "Ambos equipos marcan"),
-        "doble oportunidad": ("DOBLE_OPORTUNIDAD", "Doble oportunidad"),
+        "1x2": (
+            "1X2",
+            "Resultado del partido"
+        ),
+
+        "total": (
+            "OVER_UNDER",
+            "Más/Menos goles"
+        ),
+
+        "total de goles": (
+            "OVER_UNDER",
+            "Más/Menos goles"
+        ),
+
+        "ambos equipos marcan": (
+            "AMBOS_MARCAN",
+            "Ambos equipos marcan"
+        ),
+
+        "doble oportunidad": (
+            "DOBLE_OPORTUNIDAD",
+            "Doble oportunidad"
+        ),
     }
 
     def __init__(self, casa_apuesta):
@@ -244,7 +264,7 @@ class AltenarScraper:
                 detalle = self.obtener_detalle_evento(event_id)
                 cuotas = self.extraer_cuotas_evento(detalle)
 
-                logger.info(f"Cuotas útiles:", {len(cuotas)})
+                logger.info("Cuotas útiles: %s", {len(cuotas)})
 
                 todas_las_cuotas.extend(cuotas)
 

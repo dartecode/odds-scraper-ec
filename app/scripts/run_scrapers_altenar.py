@@ -18,7 +18,7 @@ def ejecutar_scrapers_altenar():
             CasaApuesta.integracion.isnot(None)
         ).all()
 
-        logger.info("Casas Altenar encontradas:", len(casas))
+        logger.info("Casas Altenar encontradas: %s", {len(casas)})
 
         for casa in casas:
             scraper = AltenarScraper(casa_apuesta=casa)
@@ -30,7 +30,7 @@ def ejecutar_scrapers_altenar():
                 logger.info(f"Se insertaron {len(cuotas)} cuotas de {casa.nombre}")
 
     except Exception as e:
-        logger.exception("Error ejecutando scrapers Altenar:", e)
+        logger.exception(f"Error ejecutando scrapers Altenar:", {e})
         raise
 
     finally:

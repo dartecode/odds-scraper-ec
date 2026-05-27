@@ -10,7 +10,7 @@ def ejecutar_scraping():
 
     try:
         ejecutar_scrapers_altenar()
-        ejecutar_scrapers_sportradar()
+        #ejecutar_scrapers_sportradar()
 
     except Exception as e:
         print("Error general:", e)

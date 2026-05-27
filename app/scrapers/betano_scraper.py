@@ -79,7 +79,7 @@ class BetanoScraper:
             for evento in eventos:
                 api_partido = self._construir_api_partido(evento)
 
-                logger.info(f"Leyendo partido Betano:", {api_partido})
+                logger.info("Leyendo partido Betano: %s", {api_partido})
 
                 json_partido = self._leer_json(page, api_partido)
 
@@ -88,7 +88,7 @@ class BetanoScraper:
 
                 cuotas = self._extraer_cuotas_partido(json_partido)
 
-                logger.info(f"Cuotas extraídas del partido:", {len(cuotas)})
+                logger.info("Cuotas extraídas del partido: %s", {len(cuotas)})
 
                 todas_las_cuotas.extend(cuotas)
 
@@ -112,18 +112,18 @@ class BetanoScraper:
             contenido = page.locator("body").inner_text().strip()
 
             if not contenido:
-                logger.warning("Respuesta vacía Betano:", url)
+                logger.warning("Respuesta vacía Betano: %s", url)
                 return None
 
             if not contenido.startswith("{"):
-                logger.error(f"No llegó JSON Betano:", {url})
-                logger.warning(f"Inicio respuesta:", {contenido[:300]})
+                logger.error("No llegó JSON Betano: %s", {url})
+                logger.warning("Inicio respuesta: %s", {contenido[:300]})
                 return None
 
             return json.loads(contenido)
 
         except Exception as e:
-            logger.error(f"Error leyendo JSON Betano:", {e})
+            logger.error("Error leyendo JSON Betano: %s", {e})
             return None
 
     def _buscar_eventos(self, obj, eventos):

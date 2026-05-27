@@ -103,7 +103,7 @@ class SortiScraper:
             return data
 
         except Exception as e:
-            logger.error("Error leyendo eventos Sorti:", e)
+            logger.error("Error leyendo eventos Sorti: %s", e)
             return []
 
     def _obtener_nombre_outcome(self, outcome):
@@ -169,7 +169,7 @@ class SortiScraper:
         local, visitante = self._obtener_equipos_desde_1x2(evento)
 
         if not local or not visitante:
-            logger.error(f"No se pudieron obtener equipos Sorti:", {evento.get("eventId")})
+            logger.error("No se pudieron obtener equipos Sorti: %s", {evento.get("eventId")})
             return []
 
         fecha_partido = self._obtener_fecha_partido(evento)

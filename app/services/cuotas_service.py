@@ -188,7 +188,7 @@ def insertar_cuotas(cuotas):
             total = len(cuotas)
 
             logger.info("Iniciando inserción...")
-            logger.info("Total cuotas recibidas:", total)
+            logger.info("Total cuotas recibidas: %s", total)
 
             for i, cuota in enumerate(cuotas, start=1):
                 logger.info(

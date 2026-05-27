@@ -43,7 +43,7 @@ def ejecutar_scrapers_sportradar():
                 logger.warning(f"No se encontraron cuotas para {casa.nombre}")
 
     except Exception as e:
-        logger.exception("Error ejecutando scrapers SportRadar:", e)
+        logger.exception("Error ejecutando scrapers SportRadar: %s", e)
         raise
 
     finally:

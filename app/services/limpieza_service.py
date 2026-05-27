@@ -18,7 +18,7 @@ def limpiar_cuotas_antiguas():
         logger.info("Cuotas antiguas eliminadas")
 
     except Exception as e:
-        logger.error("Error limpiando cuotas:", e)
+        logger.error("Error limpiando cuotas: %s", e)
 
     finally:
         db.close()
