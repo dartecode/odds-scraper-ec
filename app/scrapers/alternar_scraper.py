@@ -142,11 +142,11 @@ class AltenarScraper:
             if seleccion_limpia.startswith("menos de"):
                 return "UNDER"
 
-        if mercado == "ambos equipos marcan":
-            if seleccion_limpia in ["sí", "si"]:
-                return "SI"
-            if seleccion_limpia == "no":
-                return "NO"
+        if mercado in ["total", "total de goles"]:
+            if seleccion_limpia.startswith("más de") or seleccion_limpia.startswith("mas de"):
+                return "OVER"
+            if seleccion_limpia.startswith("menos de"):
+                return "UNDER"
 
         if mercado == "doble oportunidad":
             if seleccion_limpia in [f"{local_limpio} o empate", "1 o empate", "1 o x", "1x"]:
@@ -202,7 +202,7 @@ class AltenarScraper:
                     linea = odd.get("sv")
 
                     if (
-                        mercado_normalizado == "total"
+                        mercado_normalizado in ["total", "total de goles"]
                         and str(linea) not in self.LINEAS_TOTAL_PERMITIDAS
                     ):
                         continue
@@ -264,7 +264,7 @@ class AltenarScraper:
                 detalle = self.obtener_detalle_evento(event_id)
                 cuotas = self.extraer_cuotas_evento(detalle)
 
-                logger.info("Cuotas útiles: %s", {len(cuotas)})
+                logger.info("Cuotas útiles: %s", len(cuotas))
 
                 todas_las_cuotas.extend(cuotas)
 

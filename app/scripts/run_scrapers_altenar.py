@@ -27,7 +27,7 @@ def ejecutar_scrapers_altenar():
 
             if cuotas:
                 insertar_cuotas(cuotas)
-                logger.info(f"Se insertaron {len(cuotas)} cuotas de {casa.nombre}")
+                logger.info(f"Se insertaron cuotas de {casa.nombre} en base de datos")
 
     except Exception as e:
         logger.exception(f"Error ejecutando scrapers Altenar:", {e})
