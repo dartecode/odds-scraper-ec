@@ -61,6 +61,7 @@ class SortiScraper:
 
         for evento in eventos:
             cuotas = self._extraer_cuotas_partido(evento)
+            logger.info("Sorti partido %s | cuotas extraídas: %s", evento.get("eventId"),len(cuotas))
             todas_las_cuotas.extend(cuotas)
 
         return todas_las_cuotas
@@ -72,7 +73,7 @@ class SortiScraper:
             "tournamentId": "sr:tournament:16",
             "startDate": "Thu May 21 2026 00:00:00 GMT-0500",
             "endDate": "Thu May 20 2027 23:59:59 GMT-0500",
-            "limit": 50,
+            "limit": 200,
             "marketId": [1, 10, 18, 29],
             "statusesEventSport": ["Live", "NotStarted"],
         }
