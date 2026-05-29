@@ -13,10 +13,11 @@ def ejecutar_scrapers_sportradar():
     db = SessionLocal()
 
     try:
+        #No se ejecuta Betano porque cloudfare bloquea la ip del servidor, betano solo funciona localmente
         casas = db.query(CasaApuesta).filter(
             CasaApuesta.activo == True,
             CasaApuesta.proveedor_id == PROVEEDOR_SPORTRADAR_ID,
-            CasaApuesta.integracion.in_(["betano", "sorti"])
+            CasaApuesta.integracion != "betano"
         ).all()
 
         logger.info(f"Casas sr encontradas: {len(casas)}")
@@ -38,7 +39,7 @@ def ejecutar_scrapers_sportradar():
 
             if cuotas:
                 insertar_cuotas(cuotas)
-                logger.info(f"Se insertaron {len(cuotas)} cuotas de {casa.nombre}")
+                logger.info(f"Se insertaron cuotas de {casa.nombre} en base de datos")
             else:
                 logger.warning(f"No se encontraron cuotas para {casa.nombre}")
 
