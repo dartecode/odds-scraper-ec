@@ -157,6 +157,13 @@ class AltenarScraper:
 
             if seleccion_limpia in [f"empate o {visitante_limpio}", "empate o 2", "x o 2", "x2"]:
                 return "X2"
+            
+        if mercado == "ambos equipos marcan":
+            if seleccion_limpia in ["sí", "si", "yes"]:
+                return "SI"
+
+            if seleccion_limpia in ["no"]:
+                return "NO"
 
         raise Exception(
             f"Selección no mapeada: mercado={mercado}, seleccion={seleccion}"
